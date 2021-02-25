@@ -72,6 +72,51 @@ let
   };
 
 
+
+  idris_bytes = pkgs.idrisPackages.build-idris-package rec {
+    name = "idris-bytes";
+    version = "v0";
+
+    ipkgName = "bytes";
+    idrisDeps = [];
+    src = fetchFromGitHub {
+      owner = "ziman";
+      repo = "idris-bytes";
+      rev = "c0ed9db526d4529780f9d7d2636a40faa07661a5";
+
+      sha256 = "1xyb7k0mrk5imjf5jr2gvqwvasbfy6j4lxvz99r9icfz7crz8dfp";
+    };
+  #extraBuildInputs = [pkgs.idrisPackages.contrib];
+    meta = {
+      description = "sha256 with c ffi";
+      homepage = "https://github.com/galtys/idris-sha256c";
+      license = lib.licenses.bsd2;
+      maintainers = [];
+    };
+  };
+
+  idris_text = pkgs.idrisPackages.build-idris-package rec {
+    name = "text";
+    version = "v0";
+
+    ipkgName = "text";
+    idrisDeps = [pkgs.idrisPackages.bytes];
+    src = fetchFromGitHub {
+      owner = "ziman";
+      repo = "text";
+      rev = "007db8663e2d0660ef0538a5d334c51b3d2660fd";
+
+      sha256 = "0yz0w4gq945k3kg601yzkllk14l14z31a57sypxbz5g407qrlylh";
+    };
+  #extraBuildInputs = [pkgs.idrisPackages.contrib];
+    meta = {
+      description = "sha256 with c ffi";
+      homepage = "https://github.com/galtys/idris-sha256c";
+      license = lib.licenses.bsd2;
+      maintainers = [];
+    };
+  };
+
   
 
   idris_xml = pkgs.idrisPackages.build-idris-package rec {
